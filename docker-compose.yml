@@ -1,20 +1,20 @@
 version: '3.7'
 
 services:
-  app:
-    container_name: app
-    image: app_image
-    env_file:
-      - .env
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./:/src
-    ports:
-      - "16000:8000"
-    depends_on:
-      - app_db
+  # app:
+  #   container_name: app
+  #   image: app_image
+  #   env_file:
+  #     - .env
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./:/src
+  #   ports:
+  #     - "16000:8000"
+  #   depends_on:
+  #     - app_db
 
   app_db:
     container_name: app_db
@@ -27,7 +27,7 @@ services:
       - app_pg_data_backups:/backups
       - ./scripts/postgres:/scripts
     ports:
-      - "65432:5432"
+      - "5432:5432"
 
   app_redis:
     image: redis:6.2-alpine
@@ -37,7 +37,7 @@ services:
       - 'redis-server'
       - '--requirepass myStrongPassword'
     ports:
-      - 36379:6379
+      - 6379:6379
 
 volumes:
   app_pg_data:

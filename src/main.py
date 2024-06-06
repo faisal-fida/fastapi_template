@@ -11,7 +11,6 @@ from src.auth.router import router as auth_router
 from src.config import app_configs, settings
 from src.external_service.router import router as external_service_router
 
-
 @asynccontextmanager
 async def lifespan(_application: FastAPI) -> AsyncGenerator:
     # Startup

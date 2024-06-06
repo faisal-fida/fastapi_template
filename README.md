@@ -1,8 +1,5 @@
-# FastAPI Example Project
-Some people were searching my GitHub profile for project examples after reading the article on [FastAPI best practices](https://github.com/zhanymkanov/fastapi-best-practices).
-Unfortunately, I didn't have useful public repositories, but only my old proof-of-concept projects. 
+# FastAPI Starter Template
 
-Hence, I have decided to fix that and show how I start projects nowadays, after getting some real-world experience. 
 This repo is kind of a template I use when starting up new FastAPI projects:
 - some configs for production
   - gunicorn with dynamic workers configuration (stolen from [@tiangolo](https://github.com/tiangolo))
@@ -31,27 +28,28 @@ so there might be some workarounds instead of neat solutions, but overall idea o
 
 ### First Build Only
 1. `cp .env.example .env`
-2. `docker network create app_main`
-3. `docker-compose up -d --build`
+2. `pip install poetry`
+3. `poetry install`
+4. `just up`
+
 
 ### Linters
-Format the code with `ruff --fix` and `ruff format`
 ```shell
-docker compose exec app format
+ruff --fix && ruff format
 ```
 
 ### Migrations
 - Create an automatic migration from changes in `src/database.py`
 ```shell
-docker compose exec app makemigrations *migration_name*
+
 ```
 - Run migrations
 ```shell
-docker compose exec app migrate
+
 ```
 - Downgrade migrations
 ```shell
-docker compose exec app downgrade -1  # or -2 or base or hash of the migration
+
 ```
 ### Tests
 All tests are integrational and require DB connection. 
@@ -62,7 +60,7 @@ One of the choices I've made is to use default database (`postgres`), separated 
 
 Run tests
 ```shell
-docker compose exec app pytest
+just test
 ```
 ### Justfile
 The template is using [Just](https://github.com/casey/just). 

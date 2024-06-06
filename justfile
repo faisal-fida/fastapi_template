@@ -1,23 +1,13 @@
+set dotenv-load
+
 default:
-  just --list
+  echo $JWT_SECRET
 
 up:
-  docker-compose up -d
-
-kill:
-  docker-compose kill
+  scripts/start-dev.sh
 
 build:
-  docker-compose build
-
-ps:
-  docker-compose ps
-
-exec *args:
-  docker-compose exec app {{args}}
-
-logs *args:
-    docker-compose logs {{args}} -f
+  chmod +x scripts/* && scripts/build.sh
 
 mm *args:
   docker compose exec app alembic revision --autogenerate -m "{{args}}"
