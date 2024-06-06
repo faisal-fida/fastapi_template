@@ -9,7 +9,7 @@ class Client:
     which returns the list of APIs with public access.
     """
 
-    BASE_URL: str = "https://api.publicapis.org"
+    BASE_URL: str = "https://raw.githubusercontent.com"
 
     @property
     def client(self):
@@ -17,6 +17,6 @@ class Client:
 
     async def get_public_apis(self) -> PublicAPIsResponse:
         async with self.client as client:
-            response = await client.get("/entries")
-
+            response = await client.get("/marcelscruz/public-apis/main/db/resources.json")
+            response.raise_for_status()
             return PublicAPIsResponse.model_validate_json(response.read())

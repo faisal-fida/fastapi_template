@@ -16,9 +16,9 @@ class Config(BaseSettings):
 
     SENTRY_DSN: str | None = None
 
-    CORS_ORIGINS: list[str]
+    CORS_ORIGINS: list[str] = ["http://localhost:3000"]
     CORS_ORIGINS_REGEX: str | None = None
-    CORS_HEADERS: list[str]
+    CORS_HEADERS: list[str] = ["*"]
 
     APP_VERSION: str = "1"
 

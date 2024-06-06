@@ -1,3 +1,40 @@
+[tool.poetry]
+name = "fasterr"
+version = "0.1.0"
+description = ""
+authors = ["Faisal Fida <69955157+faisal-fida@users.noreply.github.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+redis = "^5.0.5"
+alembic = "^1.13.1"
+bcrypt = "^4.1.3"
+psycopg2 = "^2.9.9"
+python-jose = "^3.3.0"
+SQLAlchemy = "^2.0.30"
+httpx = "^0.27.0"
+pydantic-settings = "^2.3.1"
+asyncpg = "^0.29.0"
+sentry-sdk = "^2.5.0"
+uvicorn = {extras = ["standard"], version = "^0.30.1"}
+pydantic = {extras = ["email"], version = "^2.7.3"}
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.8"
+coverage = "^7.5.3"
+mypy = "^1.10.0"
+pytest = "^8.2.2"
+pytest-asyncio = "^0.23.7"
+async-asgi-testclient = "^1.4.11"
+pytest-env = "^1.1.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.ruff]
 line-length = 88
 
@@ -46,3 +83,4 @@ target-version = "py311"
 [tool.ruff.mccabe]
 # Unlike Flake8, default to a complexity level of 10.
 max-complexity = 10
+
