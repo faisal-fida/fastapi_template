@@ -1,10 +1,5 @@
-set dotenv-load
-
-default:
-  echo $JWT_SECRET
-
 up:
-  scripts/start-dev.sh
+  docker compose up -d --build && scripts/start-dev.sh
 
 build:
   chmod +x scripts/* && scripts/build.sh

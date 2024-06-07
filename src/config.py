@@ -4,6 +4,9 @@ from pydantic import PostgresDsn, RedisDsn, model_validator
 from pydantic_settings import BaseSettings
 
 from src.constants import Environment
+from src.utils import load_env_vars
+
+load_env_vars()
 
 
 class Config(BaseSettings):
@@ -16,9 +19,9 @@ class Config(BaseSettings):
 
     SENTRY_DSN: str | None = None
 
-    CORS_ORIGINS: list[str] = ["http://localhost:3000"]
+    CORS_ORIGINS: list[str] = ["http://localhost:3000"] if ENVIRONMENT.is_debug else []
     CORS_ORIGINS_REGEX: str | None = None
-    CORS_HEADERS: list[str] = ["*"]
+    CORS_HEADERS: list[str] = ["*"] if ENVIRONMENT.is_debug else []
 
     APP_VERSION: str = "1"
 

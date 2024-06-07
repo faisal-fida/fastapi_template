@@ -1,4 +1,7 @@
 from pydantic_settings import BaseSettings
+from src.utils import load_env_vars
+
+load_env_vars()
 
 
 class AuthConfig(BaseSettings):

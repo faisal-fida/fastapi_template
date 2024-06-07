@@ -17,6 +17,8 @@ class Client:
 
     async def get_public_apis(self) -> PublicAPIsResponse:
         async with self.client as client:
-            response = await client.get("/marcelscruz/public-apis/main/db/resources.json")
+            response = await client.get(
+                "/marcelscruz/public-apis/main/db/resources.json"
+            )
             response.raise_for_status()
             return PublicAPIsResponse.model_validate_json(response.read())

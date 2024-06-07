@@ -5,7 +5,6 @@ from pydantic import EmailStr, Field, field_validator
 from src.models import CustomModel
 
 
-
 class AuthUser(CustomModel):
     email: EmailStr
     password: str = Field(min_length=6, max_length=128)
