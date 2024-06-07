@@ -2,7 +2,7 @@ up:
   docker compose up -d --build && scripts/start-dev.sh
 
 build:
-  chmod +x scripts/* && scripts/build.sh
+  chmod +x scripts/* && pip install -U poetry && poetry install && poetry shell
 
 mm *args:
   docker compose exec app alembic revision --autogenerate -m "{{args}}"
